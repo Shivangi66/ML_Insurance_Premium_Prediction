@@ -99,14 +99,11 @@ def preprocess_input(selected_values):
     else:
         df['normalized_risk_score'] = risk_score.get(med_hist, 0)
 
-    min_value = df['normalized_risk_score'].min()
-    max_value = df['normalized_risk_score'].max()
+    min_value = 0
+    max_value = 14 # risk score for heart disease (8) + second max risk score (6) for diabetes or high blood pressure
     print(df.at[0, 'normalized_risk_score'], min_value, max_value)
 
-    if max_value == 0 & min_value == 0:
-        df['normalized_risk_score'] = 0
-    else:
-        df['normalized_risk_score'] = (df.at[0, 'normalized_risk_score'] - min_value) / (max_value - min_value)
+    df['normalized_risk_score'] = (df.at[0, 'normalized_risk_score'] - min_value) / (max_value - min_value)
 
     df['income_level'] = 0
     df.drop(['medical_history','gender', 'bmi_category', 'region', 'marital_status', 'employment_status', 'smoking_status'], axis=1, inplace=True)
