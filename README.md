@@ -26,3 +26,6 @@ The script will prompt for user input and display the predicted insurance premiu
 **Customization**
 To update models, replace the .joblib files in the artifacts/ directory.
 Modify prediction_helper.py to change preprocessing or prediction logic.
+
+**App Link** 
+https://ml-insurance-premium-prediction-shivangi.streamlit.app/
